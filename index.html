@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Brand Designer — Cowork Marketplace</title>
+  <meta name="description" content="incident.io's complete design system as a Claude Cowork plugin. Brand colors, typography, icons, and multi-format output in one package.">
+  <meta property="og:title" content="Marketing Brand Designer — Cowork Marketplace">
+  <meta property="og:description" content="incident.io's complete design system as a Claude Cowork plugin.">
+  <meta property="og:type" content="website">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @font-face { font-family: "STK Bureau Serif"; src: url("https://incident.io/fonts/stkbureau-serif-book.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "STK Bureau Sans"; src: url("https://incident.io/fonts/stkbureau-sans-book.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: "STK Bureau Sans"; src: url("https://incident.io/fonts/stkbureau-sans-medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: "Geist Mono"; src: url("https://incident.io/fonts/geist-mono-latin.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+
+  @theme {
+    --color-alarmalade: #f25533;
+    --color-charcoal: #161618;
+    --color-burgundy: #5a0a17;
+    --color-sand-light: #f8f5f0;
+    --color-sand: #f1ebe2;
+    --color-sand-dark: #e4d9c8;
+    --color-content-primary: #161618;
+    --color-content-secondary: #161618a8;
+    --color-content-tertiary: #16161866;
+    --color-surface-primary: #ffffff;
+    --color-surface-secondary: #f8f5f0;
+    --color-surface-tertiary: #f1ebe2;
+    --color-surface-quaternary: #e4d9c8;
+    --font-sans: "STK Bureau Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "STK Bureau Serif", ui-serif, Georgia, serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
+  }
+
+  @utility text-h1-60 { font-size: 60px; font-family: var(--font-serif); font-weight: 400; line-height: 1.1; letter-spacing: -1.8px; text-wrap: balance; }
+  @utility text-h2 { font-size: 44px; font-family: var(--font-serif); font-weight: 400; line-height: 1.1; letter-spacing: -1.32px; text-wrap: balance; }
+  @utility text-h3 { font-size: 36px; font-family: var(--font-serif); font-weight: 400; line-height: 1.15; letter-spacing: -0.9px; text-wrap: balance; }
+  @utility text-h4 { font-size: 24px; font-family: var(--font-sans); font-weight: 500; line-height: 1.3; letter-spacing: -0.24px; text-wrap: balance; }
+  @utility text-body-lg { font-size: 24px; font-family: var(--font-sans); font-weight: 400; line-height: 1.3; letter-spacing: -0.24px; }
+  @utility text-body-emphasis { font-size: 18px; font-family: var(--font-sans); font-weight: 500; line-height: 1.4; letter-spacing: -0.18px; }
+  @utility text-body { font-size: 18px; font-family: var(--font-sans); font-weight: 400; line-height: 1.4; letter-spacing: -0.18px; }
+  @utility text-body-sm { font-size: 16px; font-family: var(--font-sans); font-weight: 400; line-height: 1.4; letter-spacing: -0.16px; }
+  @utility text-body-sm-emphasis { font-size: 16px; font-family: var(--font-sans); font-weight: 500; line-height: 1.4; letter-spacing: -0.16px; }
+  @utility text-body-xs { font-size: 13px; font-family: var(--font-sans); font-weight: 400; line-height: 1.4; letter-spacing: -0.13px; }
+  @utility text-body-xs-emphasis { font-size: 13px; font-family: var(--font-sans); font-weight: 500; line-height: 1.4; letter-spacing: -0.13px; }
+
+  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fade-in { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-rise { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-fade { animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body class="bg-sand-light min-h-screen">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-sand-light/80 backdrop-blur-md border-b border-sand-dark">
+    <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-3">
+        <svg class="h-7 w-auto" viewBox="0 0 128 163" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.7336 139.642V163C20.7585 156.323 0 131.711 0 102.372C0 85.4557 7.15792 72.0354 18.1053 58.8703C27.1831 47.9534 49.5985 19.0426 56.6543 3.08954C58.3673 -0.783473 62.7348 -0.633805 64.6182 1.44721C70.6432 8.10421 78.0694 22.6432 80.4983 39.135C80.9932 42.4953 81.1969 45.2388 81.3587 47.4184C81.706 52.0954 81.8604 54.1748 84.2854 54.1748C88.0955 54.1748 90.588 48.3977 91.1358 42.4345C91.4869 38.6136 95.2774 37.3346 97.8914 38.6136C110.463 44.7644 123.292 74.0426 126.393 88.4102C127.366 92.9158 128 97.5719 128 102.372C128 131.646 107.335 156.214 79.4537 162.955V139.642H48.7336ZM64.0002 130.333C73.8316 130.333 81.8016 122.789 81.8016 113.483C81.8016 98.6407 70.8577 88.0345 65.4048 84.8105C65.0364 84.5928 64.8523 84.4839 64.3512 84.4974C63.9843 84.5073 63.4429 84.7369 63.181 84.9935C62.8232 85.3441 62.7283 85.743 62.5387 86.5409C61.5721 90.6065 58.5292 93.5054 55.327 96.556C50.9141 100.76 46.1988 105.252 46.1988 113.483C46.1988 122.789 54.1688 130.333 64.0002 130.333Z" fill="#F25533"/></svg>
+        <span class="text-body-sm-emphasis text-content-primary">Cowork marketplace</span>
+      </div>
+      <a href="#install" class="bg-alarmalade text-white text-body-xs-emphasis px-5 py-2 rounded-full hover:bg-alarmalade/90 transition-colors">Install plugin</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="px-6 pt-20 pb-16">
+    <div class="max-w-5xl mx-auto">
+      <span class="animate-fade inline-flex items-center px-3 py-1 text-body-xs-emphasis rounded-full bg-alarmalade/10 text-alarmalade border border-alarmalade/20">Claude Cowork plugin</span>
+      <h1 class="animate-rise delay-1 text-h1-60 text-content-primary mt-6">Marketing Brand Designer</h1>
+      <p class="animate-fade delay-2 text-body-lg text-content-secondary mt-4 max-w-2xl">incident.io's complete design system — the visual identity for any design output. Colors, typography, icons, and component patterns, all ready for Claude.</p>
+      <div class="animate-fade delay-3 flex flex-wrap items-center gap-4 mt-8">
+        <a href="#install" class="bg-alarmalade text-white text-body-sm-emphasis px-7 py-3 rounded-full hover:bg-alarmalade/90 transition-colors">Get started</a>
+        <a href="https://github.com/twentworth12/plugin-dev" class="bg-sand text-charcoal text-body-sm-emphasis px-7 py-3 rounded-full border border-sand-dark hover:border-charcoal/20 transition-colors">View on GitHub</a>
+      </div>
+      <div class="animate-fade delay-4 flex flex-wrap items-center gap-4 mt-6 text-body-xs text-content-tertiary">
+        <span class="font-mono bg-sand rounded-full px-2.5 py-0.5">v1.0.0</span>
+        <span>By <a href="https://incident.io" class="text-content-secondary hover:text-content-primary transition-colors">Tom Wentworth</a></span>
+        <span>Node.js 18+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase cards -->
+  <section class="px-6 pb-16">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Colors -->
+      <div class="bg-white border border-sand-dark rounded-xl p-6">
+        <div class="flex gap-2 mb-4">
+          <div class="w-8 h-8 rounded-full bg-sand-light border border-sand-dark"></div>
+          <div class="w-8 h-8 rounded-full bg-sand"></div>
+          <div class="w-8 h-8 rounded-full bg-alarmalade"></div>
+          <div class="w-8 h-8 rounded-full bg-charcoal"></div>
+        </div>
+        <h3 class="text-body-emphasis text-content-primary">Brand colors</h3>
+        <p class="text-body-sm text-content-secondary mt-1">Sand surfaces, Alarmalade accents, semantic content tokens.</p>
+      </div>
+      <!-- Typography -->
+      <div class="bg-white border border-sand-dark rounded-xl p-6">
+        <div class="mb-4">
+          <p class="font-serif text-[28px] text-content-primary leading-tight" style="letter-spacing:-0.9px">Headline</p>
+          <p class="text-body-sm text-content-secondary mt-1">Body text in sans</p>
+        </div>
+        <h3 class="text-body-emphasis text-content-primary">Typography system</h3>
+        <p class="text-body-sm text-content-secondary mt-1">12 predefined styles from h1 (80px) to body-xs (13px).</p>
+      </div>
+      <!-- Icons -->
+      <div class="bg-white border border-sand-dark rounded-xl p-6">
+        <div class="grid grid-cols-3 gap-2 mb-4">
+          <div class="bg-sand-light rounded-lg p-2 flex items-center justify-center"><span class="text-body-xs text-content-tertiary">bolt</span></div>
+          <div class="bg-sand-light rounded-lg p-2 flex items-center justify-center"><span class="text-body-xs text-content-tertiary">on-call</span></div>
+          <div class="bg-sand-light rounded-lg p-2 flex items-center justify-center"><span class="text-body-xs text-content-tertiary">ai-sre</span></div>
+        </div>
+        <h3 class="text-body-emphasis text-content-primary">Icon pipeline</h3>
+        <p class="text-body-sm text-content-secondary mt-1">Extract SVGs from Figma exports with PNG and color options.</p>
+      </div>
+      <!-- Outputs -->
+      <div class="bg-white border border-sand-dark rounded-xl p-6">
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-sand text-charcoal/70">HTML</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-sand text-charcoal/70">PDF</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-sand text-charcoal/70">DOCX</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-sand text-charcoal/70">PPTX</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-sand text-charcoal/70">PNG</span>
+        </div>
+        <h3 class="text-body-emphasis text-content-primary">Multi-format output</h3>
+        <p class="text-body-sm text-content-secondary mt-1">Web pages, reports, social images, docs, and presentations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="px-6 pb-20">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-h2 text-content-primary mb-10">Everything you need for on-brand design</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white border border-sand-dark rounded-xl p-6">
+          <div class="w-2 h-2 rounded-full bg-alarmalade mb-4"></div>
+          <h3 class="text-body-emphasis text-content-primary">Complete color system</h3>
+          <p class="text-body-sm text-content-secondary mt-2">Sand surfaces, semantic content tokens for text at three opacity levels, and Alarmalade accents. All mapped to Tailwind utilities.</p>
+        </div>
+        <div class="bg-white border border-sand-dark rounded-xl p-6">
+          <div class="w-2 h-2 rounded-full bg-alarmalade mb-4"></div>
+          <h3 class="text-body-emphasis text-content-primary">Custom typography scale</h3>
+          <p class="text-body-sm text-content-secondary mt-2">STK Bureau Serif for display, Sans for body. Precise letter-spacing, line-height, and weight for every style in the scale.</p>
+        </div>
+        <div class="bg-white border border-sand-dark rounded-xl p-6">
+          <div class="w-2 h-2 rounded-full bg-alarmalade mb-4"></div>
+          <h3 class="text-body-emphasis text-content-primary">Icon extraction pipeline</h3>
+          <p class="text-body-sm text-content-secondary mt-2">Node.js script extracts individual SVGs from the Figma sprite sheet. Supports PNG export with custom colors and sizes.</p>
+        </div>
+        <div class="bg-white border border-sand-dark rounded-xl p-6">
+          <div class="w-2 h-2 rounded-full bg-alarmalade mb-4"></div>
+          <h3 class="text-body-emphasis text-content-primary">Tailwind 4 integration</h3>
+          <p class="text-body-sm text-content-secondary mt-2">Drop-in head snippet with Play CDN, custom theme tokens, and utility classes. Zero build step required.</p>
+        </div>
+        <div class="bg-white border border-sand-dark rounded-xl p-6">
+          <div class="w-2 h-2 rounded-full bg-alarmalade mb-4"></div>
+          <h3 class="text-body-emphasis text-content-primary">Component patterns</h3>
+          <p class="text-body-sm text-content-secondary mt-2">Buttons, cards, badges, inputs, tabs, modals, and empty states. All pre-styled with the brand's borders-not-shadows approach.</p>
+        </div>
+        <div class="bg-white border border-sand-dark rounded-xl p-6">
+          <div class="w-2 h-2 rounded-full bg-alarmalade mb-4"></div>
+          <h3 class="text-body-emphasis text-content-primary">Webapp archetypes</h3>
+          <p class="text-body-sm text-content-secondary mt-2">Ready-made starting points for calculators, dashboards, interactive tools, surveys, timers, and voting interfaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color palette -->
+  <section class="px-6 pb-20">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-h2 text-content-primary mb-3">The palette</h2>
+      <p class="text-body text-content-secondary mb-8 font-serif italic">The neutrals set the tone. Alarmalade makes the point.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-sand-light"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">Sand light</p><p class="font-mono text-body-xs text-content-tertiary">#F8F5F0</p></div></div>
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-sand"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">Sand</p><p class="font-mono text-body-xs text-content-tertiary">#F1EBE2</p></div></div>
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-sand-dark"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">Sand dark</p><p class="font-mono text-body-xs text-content-tertiary">#E4D9C8</p></div></div>
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-white border-b border-sand-dark"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">White</p><p class="font-mono text-body-xs text-content-tertiary">#FFFFFF</p></div></div>
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-charcoal"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">Charcoal</p><p class="font-mono text-body-xs text-content-tertiary">#161618</p></div></div>
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-alarmalade"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">Alarmalade</p><p class="font-mono text-body-xs text-content-tertiary">#F25533</p></div></div>
+        <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-16 bg-burgundy"></div><div class="bg-white p-2.5"><p class="text-body-xs-emphasis text-charcoal">Burgundy</p><p class="font-mono text-body-xs text-content-tertiary">#5A0A17</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="px-6 pb-20">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-h2 text-content-primary mb-10">Get started</h2>
+      <div class="bg-white border border-sand-dark rounded-xl p-8 max-w-2xl">
+        <ol class="space-y-8">
+          <li>
+            <p class="text-body-emphasis text-content-primary">1. Clone the plugin</p>
+            <div class="bg-charcoal rounded-xl p-5 mt-3 overflow-x-auto">
+              <code class="font-mono text-body-sm text-sand-light">git clone https://github.com/twentworth12/plugin-dev.git</code>
+            </div>
+          </li>
+          <li>
+            <p class="text-body-emphasis text-content-primary">2. Install dependencies</p>
+            <div class="bg-charcoal rounded-xl p-5 mt-3 overflow-x-auto">
+              <code class="font-mono text-body-sm text-sand-light">cd plugin-dev/skills/marketing-brand-design && npm install</code>
+            </div>
+          </li>
+          <li>
+            <p class="text-body-emphasis text-content-primary">3. Add to Claude Cowork</p>
+            <p class="text-body-sm text-content-secondary mt-2">Point Claude Cowork at the cloned directory. The plugin will be detected automatically via <code class="font-mono text-body-xs bg-sand rounded px-1.5 py-0.5">.claude-plugin/plugin.json</code>.</p>
+          </li>
+          <li>
+            <p class="text-body-emphasis text-content-primary">4. Start designing</p>
+            <p class="text-body-sm text-content-secondary mt-2">Ask Claude to build any visual output — web pages, PDFs, presentations, social images — and it will use the incident.io design system automatically.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- File structure -->
+  <section class="px-6 pb-20">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-h3 text-content-primary mb-6">What's included</h2>
+      <div class="bg-white border border-sand-dark rounded-xl p-6 max-w-xl">
+        <pre class="font-mono text-body-xs text-content-secondary leading-relaxed"><code>.claude-plugin/
+  plugin.json              # Plugin manifest
+skills/marketing-brand-design/
+  SKILL.md                 # Full design system reference
+  assets/brand/            # Logos and wordmarks (SVG + PNG)
+  assets/icons.svg         # Figma icon sprite sheet
+  references/web/          # Tailwind head, component patterns
+  references/docx/         # DOCX template
+  scripts/build-icons.mjs  # Icon extraction pipeline
+  scripts/html-to-pdf.mjs  # PDF generation (Playwright)
+  scripts/html-to-image.mjs # Social image generation</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-sand-dark px-6 py-10">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <svg class="h-5 w-auto" viewBox="0 0 128 163" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.7336 139.642V163C20.7585 156.323 0 131.711 0 102.372C0 85.4557 7.15792 72.0354 18.1053 58.8703C27.1831 47.9534 49.5985 19.0426 56.6543 3.08954C58.3673 -0.783473 62.7348 -0.633805 64.6182 1.44721C70.6432 8.10421 78.0694 22.6432 80.4983 39.135C80.9932 42.4953 81.1969 45.2388 81.3587 47.4184C81.706 52.0954 81.8604 54.1748 84.2854 54.1748C88.0955 54.1748 90.588 48.3977 91.1358 42.4345C91.4869 38.6136 95.2774 37.3346 97.8914 38.6136C110.463 44.7644 123.292 74.0426 126.393 88.4102C127.366 92.9158 128 97.5719 128 102.372C128 131.646 107.335 156.214 79.4537 162.955V139.642H48.7336ZM64.0002 130.333C73.8316 130.333 81.8016 122.789 81.8016 113.483C81.8016 98.6407 70.8577 88.0345 65.4048 84.8105C65.0364 84.5928 64.8523 84.4839 64.3512 84.4974C63.9843 84.5073 63.4429 84.7369 63.181 84.9935C62.8232 85.3441 62.7283 85.743 62.5387 86.5409C61.5721 90.6065 58.5292 93.5054 55.327 96.556C50.9141 100.76 46.1988 105.252 46.1988 113.483C46.1988 122.789 54.1688 130.333 64.0002 130.333Z" fill="#F25533"/></svg>
+        <p class="text-body-xs text-content-secondary">Built by <a href="https://incident.io" class="text-content-primary hover:text-alarmalade transition-colors">Tom Wentworth</a> at incident.io</p>
+      </div>
+      <p class="text-body-xs text-content-tertiary">Powered by Claude Cowork</p>
+    </div>
+  </footer>
+
+</body>
+</html>

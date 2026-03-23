@@ -1,0 +1,173 @@
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  /* Brand fonts */
+  @font-face {
+    font-family: "STK Bureau Serif";
+    src: url("https://incident.io/fonts/stkbureau-serif-light.woff2")
+      format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "STK Bureau Serif";
+    src: url("https://incident.io/fonts/stkbureau-serif-book.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "STK Bureau Sans";
+    src: url("https://incident.io/fonts/stkbureau-sans-book.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "STK Bureau Sans";
+    src: url("https://incident.io/fonts/stkbureau-sans-medium.woff2")
+      format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("https://incident.io/fonts/geist-mono-latin.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Kalam";
+    src: url("https://incident.io/fonts/kalam-regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Brand theme tokens */
+  @theme {
+    --color-alarmalade: #f25533;
+    --color-charcoal: #161618;
+    --color-burgundy: #5a0a17;
+    --color-sand-light: #f8f5f0;
+    --color-sand: #f1ebe2;
+    --color-sand-dark: #e4d9c8;
+
+    /* Semantic content colors (from website tailwind.config.js) */
+    --color-content-primary: #161618;
+    --color-content-secondary: #161618a8; /* slate-900 at 66% */
+    --color-content-tertiary: #16161866;  /* slate-900 at 40% */
+
+    /* Semantic surface colors */
+    --color-surface-primary: #ffffff;
+    --color-surface-secondary: #f8f5f0;
+    --color-surface-tertiary: #f1ebe2;
+    --color-surface-quaternary: #e4d9c8;
+
+    --font-sans: "STK Bureau Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "STK Bureau Serif", ui-serif, Georgia, serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
+    --font-handwritten: "Kalam", cursive;
+  }
+
+  /* Typography scale utilities */
+  @utility text-h1 {
+    font-size: 80px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -3.2px;
+    text-wrap: balance;
+  }
+  @utility text-h1-60 {
+    font-size: 60px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1.8px;
+    text-wrap: balance;
+  }
+  @utility text-h2 {
+    font-size: 44px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1.32px;
+    text-wrap: balance;
+  }
+  @utility text-h3 {
+    font-size: 36px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.9px;
+    text-wrap: balance;
+  }
+  @utility text-h4 {
+    font-size: 24px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.24px;
+    text-wrap: balance;
+  }
+  @utility text-body-lg {
+    font-size: 24px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.24px;
+  }
+  @utility text-body-emphasis {
+    font-size: 18px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.18px;
+  }
+  @utility text-body {
+    font-size: 18px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.18px;
+  }
+  @utility text-body-sm {
+    font-size: 16px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.16px;
+  }
+  @utility text-body-sm-emphasis {
+    font-size: 16px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.16px;
+  }
+  @utility text-body-xs {
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.13px;
+  }
+  @utility text-body-xs-emphasis {
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.13px;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>

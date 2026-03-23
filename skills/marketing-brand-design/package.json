@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "svg-pathdata": "^8.0.0"
+  },
+  "dependencies": {
+    "docx": "^9.6.1",
+    "playwright": "^1.58.2",
+    "sharp": "^0.34.5"
+  }
+}

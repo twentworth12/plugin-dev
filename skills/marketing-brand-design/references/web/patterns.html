@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>incident.io design system — pattern library</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  /* Brand fonts */
+  @font-face {
+    font-family: "STK Bureau Serif";
+    src: url("https://incident.io/fonts/stkbureau-serif-light.woff2")
+      format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "STK Bureau Serif";
+    src: url("https://incident.io/fonts/stkbureau-serif-book.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "STK Bureau Sans";
+    src: url("https://incident.io/fonts/stkbureau-sans-book.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "STK Bureau Sans";
+    src: url("https://incident.io/fonts/stkbureau-sans-medium.woff2")
+      format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("https://incident.io/fonts/geist-mono-latin.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Kalam";
+    src: url("https://incident.io/fonts/kalam-regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Brand theme tokens */
+  @theme {
+    --color-alarmalade: #f25533;
+    --color-charcoal: #161618;
+    --color-burgundy: #5a0a17;
+    --color-sand-light: #f8f5f0;
+    --color-sand: #f1ebe2;
+    --color-sand-dark: #e4d9c8;
+    --font-sans: "STK Bureau Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "STK Bureau Serif", ui-serif, Georgia, serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
+    --font-handwritten: "Kalam", cursive;
+  }
+
+  /* Typography scale utilities */
+  @utility text-h1 {
+    font-size: 80px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -3.2px;
+    text-wrap: balance;
+  }
+  @utility text-h1-60 {
+    font-size: 60px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1.8px;
+    text-wrap: balance;
+  }
+  @utility text-h2 {
+    font-size: 44px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1.32px;
+    text-wrap: balance;
+  }
+  @utility text-h3 {
+    font-size: 36px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.9px;
+    text-wrap: balance;
+  }
+  @utility text-h4 {
+    font-size: 24px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.24px;
+    text-wrap: balance;
+  }
+  @utility text-body-lg {
+    font-size: 24px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.24px;
+  }
+  @utility text-body-emphasis {
+    font-size: 18px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.18px;
+  }
+  @utility text-body {
+    font-size: 18px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.18px;
+  }
+  @utility text-body-sm {
+    font-size: 16px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.16px;
+  }
+  @utility text-body-sm-emphasis {
+    font-size: 16px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.16px;
+  }
+  @utility text-body-xs {
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.13px;
+  }
+  @utility text-body-xs-emphasis {
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.13px;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+</head>
+<body class="bg-sand-light min-h-screen p-8 md:p-12">
+
+<!-- Load individual icon SVGs (serve with: npx serve . -p 3456) -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const needed = [...new Set([...document.querySelectorAll('[data-icon]')].map(el => el.dataset.icon))];
+    Promise.all(needed.map(id =>
+      fetch(`../assets/icons/${id}.svg`).then(r => r.ok ? r.text() : '').then(svg => ({ id, svg }))
+    )).then(icons => {
+      const map = {};
+      icons.forEach(({ id, svg }) => { map[id] = svg; });
+      document.querySelectorAll('[data-icon]').forEach(el => {
+        if (map[el.dataset.icon]) el.innerHTML = map[el.dataset.icon];
+      });
+    }).catch(() => console.warn('Icons not loaded. Run: node scripts/build-icons.mjs && npx serve . -p 3456'));
+  });
+</script>
+
+<div class="max-w-6xl mx-auto space-y-16">
+
+  <div>
+    <h1 class="text-h1-60 text-charcoal mt-6">Design system patterns</h1>
+    <p class="text-body-lg text-content-secondary mt-2">Every component from the design-system skill, rendered live. Open this file directly in a browser.</p>
+    <p class="text-body-xs text-content-tertiary mt-1">Icons loaded from <code class="font-mono">assets/icons/</code> — run <code class="font-mono">node scripts/build-icons.mjs</code> if missing.</p>
+  </div>
+
+  <!-- Colors -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Colors</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-sand-light"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">Sand light</p><p class="text-body-xs text-content-tertiary">#F8F5F0</p></div></div>
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-sand"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">Sand</p><p class="text-body-xs text-content-tertiary">#F1EBE2</p></div></div>
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-sand-dark"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">Sand dark</p><p class="text-body-xs text-content-tertiary">#E4D9C8</p></div></div>
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-white border-b border-sand-dark"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">White</p><p class="text-body-xs text-content-tertiary">#FFFFFF</p></div></div>
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-charcoal"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">Charcoal</p><p class="text-body-xs text-content-tertiary">#161618</p></div></div>
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-alarmalade"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">Alarmalade</p><p class="text-body-xs text-content-tertiary">#F25533</p></div></div>
+      <div class="rounded-xl border border-sand-dark overflow-hidden"><div class="h-20 bg-burgundy"></div><div class="p-3"><p class="text-body-xs-emphasis text-charcoal">Burgundy</p><p class="text-body-xs text-content-tertiary">#5A0A17</p></div></div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Typography</h2>
+    <div class="space-y-6 bg-white border border-sand-dark rounded-xl p-8">
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-h1 · Serif 80px/400</p><p class="text-h1 text-charcoal">Hero headline</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-h1-60 · Serif 60px/400</p><p class="text-h1-60 text-charcoal">Large section header</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-h2 · Serif 44px/400</p><p class="text-h2 text-charcoal">Section header</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-h3 · Serif 36px/400</p><p class="text-h3 text-charcoal">Subsection header</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-h4 · Sans 24px/500</p><p class="text-h4 text-charcoal">Card title or label</p></div>
+      <hr class="border-sand-dark">
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-body-lg · Sans 24px/400</p><p class="text-body-lg text-content-secondary">Lead paragraph text for introductions</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-body-emphasis · Sans 18px/500</p><p class="text-body-emphasis text-charcoal">Emphasized body text</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-body · Sans 18px/400</p><p class="text-body text-content-secondary">Default body text using content-secondary</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-body-sm · Sans 16px/400</p><p class="text-body-sm text-content-secondary">Secondary text, minimum mobile reading size</p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">text-body-xs · Sans 13px/400</p><p class="text-body-xs text-content-tertiary">Caption and metadata text at 40% opacity</p></div>
+      <hr class="border-sand-dark">
+      <div><p class="text-body-xs text-content-tertiary mb-1">font-mono · Geist Mono</p><p class="font-mono text-h3 text-charcoal">24m <span class="text-body-sm text-content-secondary">99.94%</span></p></div>
+      <div><p class="text-body-xs text-content-tertiary mb-1">font-handwritten · Kalam (use sparingly)</p><p class="font-handwritten text-body-lg text-charcoal">A playful annotation or accent</p></div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Buttons</h2>
+    <div class="flex flex-wrap items-center gap-4 bg-white border border-sand-dark rounded-xl p-8">
+      <button class="bg-alarmalade text-white text-body-sm-emphasis px-6 py-2.5 rounded-full hover:bg-alarmalade/90 transition-colors">Primary</button>
+      <button class="bg-sand text-charcoal text-body-sm-emphasis px-6 py-2.5 rounded-full border border-sand-dark hover:border-charcoal/20 transition-colors">Secondary</button>
+      <button class="text-charcoal text-body-sm-emphasis px-6 py-2.5 rounded-full border border-charcoal/20 hover:border-charcoal/40 transition-colors">Tertiary</button>
+      <button class="text-content-secondary text-body-sm hover:text-charcoal transition-colors">Naked</button>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Cards</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white border border-sand-dark rounded-xl p-6"><h4 class="text-body-emphasis text-content-primary">White card</h4><p class="text-body-sm text-content-secondary mt-2">Standard card with border, no shadow.</p></div>
+      <div class="bg-sand border border-sand-dark rounded-xl p-6"><h4 class="text-body-emphasis text-content-primary">Sand card</h4><p class="text-body-sm text-content-secondary mt-2">For results and secondary surfaces.</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-5"><p class="text-body-xs text-content-tertiary">MTTR</p><p class="font-mono text-h3 text-charcoal mt-1">24m</p><p class="text-body-xs text-emerald-600 mt-1">↓ 18% from last week</p></div>
+    </div>
+  </section>
+
+  <!-- Inputs -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Inputs</h2>
+    <div class="bg-white border border-sand-dark rounded-xl p-8 space-y-6 max-w-md">
+      <label class="block"><span class="text-body-sm-emphasis text-charcoal mb-1 block">Text input</span><input type="text" placeholder="Enter something..." class="w-full bg-white border border-sand-dark text-charcoal text-body-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-alarmalade/30 focus:border-alarmalade transition-colors" /></label>
+      <label class="block"><span class="text-body-sm-emphasis text-charcoal mb-1 block">Select</span><select class="w-full bg-white border border-sand-dark text-charcoal text-body-sm rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-alarmalade/30 focus:border-alarmalade transition-colors"><option>PagerDuty</option><option>Opsgenie</option><option>incident.io</option></select></label>
+    </div>
+  </section>
+
+  <!-- Badges -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Badges</h2>
+    <div class="flex flex-wrap items-center gap-3 bg-white border border-sand-dark rounded-xl p-8">
+      <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-sand text-charcoal/70">Default</span>
+      <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-alarmalade/10 text-alarmalade border border-alarmalade/20">Accent</span>
+      <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-emerald-50 text-emerald-700">Success</span>
+      <span class="inline-flex items-center px-2.5 py-0.5 text-body-xs-emphasis rounded-full bg-amber-50 text-amber-700">Warning</span>
+    </div>
+  </section>
+
+  <!-- Tab bar -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Tab bar</h2>
+    <div class="bg-white border border-sand-dark rounded-xl p-8">
+      <div class="flex gap-1 border-b border-sand-dark">
+        <button class="px-4 py-2 text-body-sm-emphasis text-alarmalade border-b-2 border-alarmalade -mb-px">Overview</button>
+        <button class="px-4 py-2 text-body-sm text-charcoal/50 hover:text-charcoal transition-colors">Incidents</button>
+        <button class="px-4 py-2 text-body-sm text-charcoal/50 hover:text-charcoal transition-colors">Team</button>
+      </div>
+      <p class="text-body-sm text-content-secondary mt-4">Tab content goes here.</p>
+    </div>
+  </section>
+
+  <!-- Icons -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Product icons</h2>
+    <p class="text-body-xs text-content-tertiary mb-4">Serve locally to see icons: <code class="font-mono">npx serve .</code></p>
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="bolt"></span><p class="text-body-xs text-content-secondary">bolt</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="on-call"></span><p class="text-body-xs text-content-secondary">on-call</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="status-page"></span><p class="text-body-xs text-content-secondary">status-page</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="ai-sre"></span><p class="text-body-xs text-content-secondary">ai-sre</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="book"></span><p class="text-body-xs text-content-secondary">book</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="chart"></span><p class="text-body-xs text-content-secondary">chart</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="clock"></span><p class="text-body-xs text-content-secondary">clock</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="alert"></span><p class="text-body-xs text-content-secondary">alert</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="check"></span><p class="text-body-xs text-content-secondary">check</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="sparkles"></span><p class="text-body-xs text-content-secondary">sparkles</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="escalate"></span><p class="text-body-xs text-content-secondary">escalate</p></div>
+      <div class="bg-white border border-sand-dark rounded-xl p-4 flex flex-col items-center gap-2"><span class="w-6 h-6 text-alarmalade" data-icon="incident"></span><p class="text-body-xs text-content-secondary">incident</p></div>
+    </div>
+  </section>
+
+  <!-- Empty state -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Empty state</h2>
+    <div class="bg-white border border-sand-dark rounded-xl"><div class="text-center py-16"><p class="text-body text-content-secondary">Nothing here yet.</p><p class="text-body-sm text-content-tertiary mt-1">Some helpful hint about what to do.</p></div></div>
+  </section>
+
+  <!-- Loading -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Loading spinner</h2>
+    <div class="bg-white border border-sand-dark rounded-xl"><div class="flex items-center justify-center py-12"><div class="h-5 w-5 border-2 border-alarmalade/30 border-t-alarmalade rounded-full animate-spin"></div></div></div>
+  </section>
+
+  <!-- Modal -->
+  <section>
+    <h2 class="text-h3 text-charcoal mb-6">Modal (static preview)</h2>
+    <div class="bg-charcoal/10 rounded-xl p-8 relative" style="min-height:300px">
+      <div class="absolute inset-8 bg-charcoal/40 backdrop-blur-sm rounded-lg"></div>
+      <div class="absolute inset-8 flex items-center justify-center">
+        <div class="bg-white rounded-xl border border-sand-dark max-w-sm w-full p-6">
+          <h4 class="text-body-emphasis text-content-primary">Confirm action</h4>
+          <p class="text-body-sm text-content-secondary mt-2">Are you sure you want to proceed?</p>
+          <div class="flex gap-3 mt-6">
+            <button class="bg-alarmalade text-white text-body-sm-emphasis px-6 py-2.5 rounded-full hover:bg-alarmalade/90 transition-colors">Confirm</button>
+            <button class="bg-sand text-charcoal text-body-sm-emphasis px-6 py-2.5 rounded-full border border-sand-dark hover:border-charcoal/20 transition-colors">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="text-body-xs text-content-tertiary pt-8 border-t border-sand-dark">incident.io design system — <code class="font-mono">open references/patterns.html</code></p>
+
+</div>
+</body>
+</html>
