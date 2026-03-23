@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "marketing-brand-designer",
-      "source": "./",
+      "source": "./plugins/marketing-brand-designer",
       "description": "incident.io's design system — the complete visual identity for any design output. Use this skill whenever producing visual work that should look like incident.io, including web pages, dashboards, tools, landing pages, presentations, documentation, social assets, or any branded visual output.",
       "version": "1.0.0",
       "author": {
